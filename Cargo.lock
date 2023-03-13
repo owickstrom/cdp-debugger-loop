@@ -153,9 +153,9 @@ checksum = "e91831deabf0d6d7ec49552e489aed63b7456a7a3c46cff62adad428110b0af0"
 
 [[package]]
 name = "async-tungstenite"
-version = "0.17.2"
+version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a1b71b31561643aa8e7df3effe284fa83ab1a840e52294c5f4bd7bfd8b2becbb"
+checksum = "8e6acf7e4a267eecbb127ed696bb2d50572c22ba7f586a646321e1798d8336a1"
 dependencies = [
  "async-std",
  "futures-io",
@@ -176,6 +176,12 @@ name = "base64"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "904dfeac50f3cdaba28fc6f57fdcddb75f49ed61346676a78c4ffe55877802fd"
+
+[[package]]
+name = "base64"
+version = "0.21.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4a4ddaa51a5bc52a6948f74c06d20aaaddb71924eab79b8c97a8c556e942d6a"
 
 [[package]]
 name = "block-buffer"
@@ -238,21 +244,25 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "chromiumoxide"
-version = "0.3.5"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1fbef58698a487c253c55c3d17bb1efbe268d2961a2c8278e3f86fff721355fc"
 dependencies = [
  "async-std",
  "async-tungstenite",
- "base64",
+ "base64 0.21.0",
  "cfg-if",
  "chromiumoxide_cdp",
  "chromiumoxide_types",
+ "dunce",
  "fnv",
  "futures",
  "futures-timer",
- "log",
+ "pin-project-lite",
  "serde",
  "serde_json",
  "thiserror",
+ "tracing",
  "url",
  "which",
  "winreg",
@@ -260,7 +270,9 @@ dependencies = [
 
 [[package]]
 name = "chromiumoxide_cdp"
-version = "0.3.5"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "902b90e019dff479bf5a36ed3961e955afa48c35fb2d4245d0b193e7746d50b9"
 dependencies = [
  "chromiumoxide_pdl",
  "chromiumoxide_types",
@@ -270,7 +282,9 @@ dependencies = [
 
 [[package]]
 name = "chromiumoxide_pdl"
-version = "0.3.5"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cc9319fb29ecce08ac90dd5a798c391f6a8ae1d7c90aff71f3fa27cb3cdfc3ec"
 dependencies = [
  "chromiumoxide_types",
  "either",
@@ -285,7 +299,9 @@ dependencies = [
 
 [[package]]
 name = "chromiumoxide_types"
-version = "0.3.5"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0c9187058637b8e555690935a6d25a1f7af1d71b377fc45b4257712efb34551f"
 dependencies = [
  "serde",
  "serde_json",
@@ -353,13 +369,19 @@ dependencies = [
 
 [[package]]
 name = "digest"
-version = "0.10.3"
+version = "0.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f2fb860ca6fafa5552fb6d0e816a69c8e49f0908bf524e30a90d97c85892d506"
+checksum = "8168378f4e5023e7218c89c891c0fd8ecdb5e5e4f18cb78f38cf245dd021e76f"
 dependencies = [
  "block-buffer",
  "crypto-common",
 ]
+
+[[package]]
+name = "dunce"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0bd4b30a6560bbd9b4620f4de34c3f14f60848e58a9b7216801afcb4c7b31c3c"
 
 [[package]]
 name = "either"
@@ -824,10 +846,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "sha-1"
-version = "0.10.0"
+name = "sha1"
+version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "028f48d513f9678cda28f6e4064755b3fbb2af6acd672f2c209b62323f7aea0f"
+checksum = "f04293dc80c3993519f2d7f6f511707ee7094fe0c6d3406feb330cdb3540eba3"
 dependencies = [
  "cfg-if",
  "cpufeatures",
@@ -916,19 +938,51 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
 
 [[package]]
-name = "tungstenite"
-version = "0.17.3"
+name = "tracing"
+version = "0.1.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e27992fd6a8c29ee7eef28fc78349aa244134e10ad447ce3b9f0ac0ed0fa4ce0"
+checksum = "a400e31aa60b9d44a52a8ee0343b5b18566b03a8321e0d321f695cf56e940160"
 dependencies = [
- "base64",
+ "cfg-if",
+ "pin-project-lite",
+ "tracing-attributes",
+ "tracing-core",
+]
+
+[[package]]
+name = "tracing-attributes"
+version = "0.1.22"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "11c75893af559bc8e10716548bdef5cb2b983f8e637db9d0e15126b61b484ee2"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "tracing-core"
+version = "0.1.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "24eb03ba0eab1fd845050058ce5e616558e8f8d8fca633e6b163fe25c797213a"
+dependencies = [
+ "once_cell",
+]
+
+[[package]]
+name = "tungstenite"
+version = "0.18.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "30ee6ab729cd4cf0fd55218530c4522ed30b7b6081752839b68fcec8d0960788"
+dependencies = [
+ "base64 0.13.0",
  "byteorder",
  "bytes",
  "http",
  "httparse",
  "log",
  "rand",
- "sha-1",
+ "sha1",
  "thiserror",
  "url",
  "utf-8",

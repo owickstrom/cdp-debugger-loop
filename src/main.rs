@@ -32,13 +32,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
         pause_event.await;
 
         println!("Taking screenshot {i}");
-        page.screenshot(ScreenshotParams::builder()
+        // page.screenshot(ScreenshotParams::builder()
                         // .full_page(false)
                         // .quality(10)
                         // .clip(Viewport { x: 0.0, y: 0.0, width: 100.0, height: 100.0, scale: 1.0})
                         // .from_surface(true)
                         // .omit_background(true)
-                        .build()).await?;
+                        // .build()).await?;
 
         let mut resumed_events = page.event_listener::<debugger::EventResumed>().await?;
         page.execute(debugger::ResumeParams::builder().build())
