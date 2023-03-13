@@ -1,0 +1,13 @@
+[package]
+name = "debugger-screenshots"
+version = "0.1.0"
+authors = ["owickstrom <oskar@wickstrom.tech>"]
+edition = "2018"
+
+[dependencies]
+futures = "*"
+async-std = "1"
+chromiumoxide = { version = "*", path = "../chromiumoxide" }
+rand = "*"
+serde = { version = "1", features = ["derive"] }
+serde_json = "*"
